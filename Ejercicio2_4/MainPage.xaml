@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:signature="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+             x:Class="Ejercicio2_4.MainPage">
+
+    <StackLayout Padding="20">
+
+        <!-- Control SignaturePad para capturar la firma -->
+        <signature:SignaturePadView x:Name="signaturePadView" HeightRequest="200" />
+
+        <!-- Campo para escribir la descripción -->
+        <Entry x:Name="descripcionEntry" Placeholder="Descripción de la firma" />
+
+        <!-- Botón de guardar -->
+        <Button Text="Guardar" Clicked="GuardarButton_Clicked" />
+        
+        
+        <!-- ListView para mostrar las firmas guardadas -->
+        <ListView x:Name="firmasListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame CornerRadius="5" Padding="10" Margin="5" HasShadow="True">
+                            <StackLayout>
+                                <Label Text="{Binding Descripcion}" FontSize="20" />
+                                <Image Source="{Binding FirmaDigital}" HeightRequest="100" />
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        
+
+    </StackLayout>
+
+</ContentPage>
